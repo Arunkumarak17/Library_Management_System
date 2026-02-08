@@ -22,7 +22,7 @@ This project is a Library Management System developed using SQL Server to handle
 **use the existing database**
 
 use SQL_Project
-
+```SQL
 create table books (
 	isbn varchar(100) primary key,
 	book_title varchar(100),
@@ -75,7 +75,7 @@ create table return_status(
 	return_book_name varchar(100),
 	return_date date,
 	return_book_isbn varchar(100));
-
+```
 
 
 
