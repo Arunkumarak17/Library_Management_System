@@ -16,11 +16,10 @@ This project is a Library Management System developed using SQL Server to handle
 ## Project Structure
 
 ### 1. Database Setup
+**Database Creation**: Created a database named `library_db`.
+**Table Creation**: Created tables for branches, employees, members, books, issued status, and return status. Each table includes relevant columns and relationships.
 
-- **Database Creation**: Created a database named `library_db`.
-- **Table Creation**: Created tables for branches, employees, members, books, issued status, and return status. Each table includes relevant columns and relationships.
-
--- use the existing database
+**use the existing database**
 
 use SQL_Project
 
