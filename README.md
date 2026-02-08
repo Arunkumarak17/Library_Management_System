@@ -1,6 +1,24 @@
 # Library_Management_System
-This project is a Library Management System developed using SQL Server to handle core library operations such as managing books, members, issuing and returning books, and tracking overdue items. 
---Library management system
+
+## Project Overview
+
+**Project Title**: Library_Management_System
+
+This project is a Library Management System developed using SQL Server to handle core library operations such as managing books, members, issuing and returning books, and tracking overdue items. It focuses on creating a structured relational database with tables like books, members, issued_status, and return_status, connected through primary and foreign keys for data integrity.
+
+## Objectives
+
+1. **Set up the Library Management System Database**: Create and populate the database with tables for branches, employees, members, books, issued status, and return status.
+2. **CRUD Operations**: Perform Create, Read, Update, and Delete operations on the data.
+3. **CTAS (Create Table As Select)**: Utilize CTAS to create new tables based on query results.
+4. **Advanced SQL Queries**: Develop complex queries to analyze and retrieve specific data.
+
+## Project Structure
+
+### 1. Database Setup
+
+- **Database Creation**: Created a database named `library_db`.
+- **Table Creation**: Created tables for branches, employees, members, books, issued status, and return status. Each table includes relevant columns and relationships.
 
 -- use the existing database
 
@@ -131,13 +149,17 @@ SELECT * FROM return_status;
 SELECT * FROM members;
 
 
--- Project TASK
+## Project TASK
+
+### 2. CRUD Operations
+
+ **Create**: Inserted sample records into the `books` table.
+ **Read**: Retrieved and displayed data from various tables.
+ **Update**: Updated records in the `employees` table.
+ **Delete**: Removed records from the `members` table as needed.
 
 
--- ### 2. CRUD Operations
-
-
--- Task 1. Create a New Book Record
+** Task 1. Create a New Book Record
 -- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
 
 insert into books(isbn,book_title,category,rental_price,status,author,publisher)
