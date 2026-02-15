@@ -76,7 +76,7 @@ create table return_status(
 	return_date date,
 	return_book_isbn varchar(100));
 ```
-
+#Connecting the tables using foreign key constraint
 
 ```SQL
 
@@ -160,48 +160,50 @@ SELECT * FROM members;
 
 ** Task 1. Create a New Book Record
 -- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
-
+```SQL
 insert into books(isbn,book_title,category,rental_price,status,author,publisher)
 values( '978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')
 select * from books
-
+```
 
 -- Task 2: Update an Existing Member's Address
-
+```SQL
 update members
 set member_address='125 main st'
 where member_id='C101'
 select * from members
 
-
+```
 -- Task 3: Delete a Record from the Issued Status Table
 -- Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
 
+```SQL
 delete from issued_status
 where issued_id='IS121'
 select * from issued_status
 where issued_id='IS121'
 
-
+```
 
 -- Task 4: Retrieve All Books Issued by a Specific Employee -- Objective: Select all books issued by the employee with emp_id = 'E101'.
 
+```SQL
 select * from issued_status
 where issued_emp_id='E101'
-
+```
 
 -- Task 5: List Members Who Have Issued More Than One Book -- Objective: Use GROUP BY to find members who have issued more than one book.
-
+```SQL
 select issued_emp_id,COUNT(issued_id) as total_book_issued
 from issued_status
 group by issued_emp_id
 having COUNT(issued_id) >1
 
-
+```
 -- CTAS
 -- Task 6: Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt**
 
-
+```SQL
 
 Select b.isbn,b.book_title,COUNT(ist.issued_id) as no_issued
 into book_cnts
@@ -212,23 +214,25 @@ on ist.issued_book_isbn=b.isbn
 group by b.isbn,b.book_title
 
 select * from book_cnts
-
+```
 -- Task 7. Retrieve All Books in a Specific Category:
 
+```SQL
 SELECT * FROM books
 WHERE category = 'Classic'
-
+```
 
 -- Task 8: Find Total Rental Income by Category:
-
+```SQL
 select b.category,sum(b.rental_price) as Total_price, count(*) as no_issued
 from books as b
 join issued_status as ist
 on ist.issued_book_isbn=b.isbn
 group by b.category
-
+```
 -- List Members Who Registered in the Last 180 Days:
 
+```SQL
 select * from members
 where reg_date>= DATEADD(day,-180, GETDATE())
 
@@ -238,9 +242,9 @@ insert into members(member_id,member_name,member_address,reg_date)
 values ('C128','Arun','143 marraige','2026-01-14'),
 ('C129','Anajana','143 love','2026-01-15')
 
-
+```
 -- task 10 List Employees with Their Branch Manager's Name and their branch details:
-
+```SQL
 select * from employees
 select * from branch
 
@@ -252,10 +256,11 @@ join branch as b
 on b.branch_id=e1.branch_id
 join employees as e2
 on b.manager_id=e2.emp_id
-
+```
 
 -- Task 11. Create a Table of Books with Rental Price Above a Certain Threshold 8USD:
 
+```SQL
 drop table if exists book_sales
 
 select * 
@@ -263,16 +268,16 @@ into book_sales
 from books
 where rental_price > 8
 
-
+```
 
 -- Task 12: Retrieve the List of Books Not Yet Returned
-
+```SQL
 select distinct ist.issued_book_name
 from issued_status as ist
 left join return_status as rs
 on ist.issued_id=rs.issued_id
 where rs.return_id is null
-
+```
 /*
 Task 13: 
 Identify Members with Overdue Books
@@ -285,6 +290,7 @@ Display the member's_id, member's name, book title, issue date, and days overdue
 -- overdue > 500
 */
 
+```SQL
 SELECT 
     ist.issued_member_id,
     m.member_name,
@@ -303,13 +309,14 @@ WHERE
     AND DATEDIFF(DAY, ist.issued_date, GETDATE()) > 30
 ORDER BY ist.issued_member_id;
 
-
+```
 -- 
 /*    
 Task 14: Update Book Status on Return
 Write a query to update the status of books in the books table to "Yes" when they are returned (based on entries in the return_status table).
 */
 
+```SQL
 
 SELECT * FROM issued_status
 WHERE issued_book_isbn = '978-0-330-25864-8';
@@ -404,5 +411,9 @@ EXEC add_return_records 'RS138', 'IS135', 'Good';
 -- calling function 
 EXEC add_return_records 'RS148', 'IS140', 'Good';
 
+```
 
+#Conclusion:
+The Library Management System project demonstrates the effective use of SQL for database design, data management, and query optimization. It streamlines book tracking, member management, and issue/return processes while ensuring data accuracy and efficiency.This project highlights practical skills in database development, problem-solving, and structured data analysis.
 
+# Author Arunkumar
