@@ -413,7 +413,7 @@ EXEC add_return_records 'RS148', 'IS140', 'Good';
 
 ```
 
-#Conclusion:
+**Conclusion:**
 The Library Management System project demonstrates the effective use of SQL for database design, data management, and query optimization. It streamlines book tracking, member management, and issue/return processes while ensuring data accuracy and efficiency.This project highlights practical skills in database development, problem-solving, and structured data analysis.
 
 # Author Arunkumar
