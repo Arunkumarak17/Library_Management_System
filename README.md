@@ -78,7 +78,7 @@ create table return_status(
 ```
 
 
-
+```
 
 alter table issued_status
 add constraint fk_members
@@ -128,7 +128,10 @@ UPDATE dbo.return_status
 SET issued_id = (SELECT TOP 1 issued_id FROM dbo.issued_status)
 WHERE issued_id NOT IN (SELECT issued_id FROM dbo.issued_status);
 
+```
+#Inserting Values into the table
 
+```
 INSERT INTO dbo.issued_status (issued_id)
 SELECT DISTINCT issued_id
 FROM dbo.return_status
@@ -147,6 +150,7 @@ SELECT * FROM issued_status;
 SELECT * FROM return_status;
 SELECT * FROM members;
 
+```
 
 ## Project TASK
 
