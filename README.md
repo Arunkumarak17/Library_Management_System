@@ -76,7 +76,7 @@ create table return_status(
 	return_date date,
 	return_book_isbn varchar(100));
 ```
-##Connecting the tables using foreign key constraint**
+**##Connecting the tables using foreign key constraint**
 
 ```SQL
 
